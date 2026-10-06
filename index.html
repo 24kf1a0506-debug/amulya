@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Golla Amulya | Cybersecurity Portfolio</title>
+
+    <meta name="description"
+          content="Golla Amulya - Computer Science Engineering student and Cybersecurity enthusiast">
+
+    <style>
+
+        /* ==============================
+           GLOBAL STYLES
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #050b14;
+            --bg2: #081525;
+            --card: #0c1b2d;
+            --cyan: #00e5ff;
+            --blue: #008cff;
+            --white: #ffffff;
+            --text: #c4d2df;
+            --muted: #8296aa;
+            --border: #18334d;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ==============================
+           SCROLLBAR
+        ============================== */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--cyan);
+            border-radius: 10px;
+        }
+
+        /* ==============================
+           HEADER
+        ============================== */
+
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 18px 8%;
+
+            background: rgba(5, 11, 20, 0.92);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: var(--cyan);
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: var(--text);
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--cyan);
+        }
+
+        /* ==============================
+           HERO
+        ============================== */
+
+        #home {
+            min-height: 100vh;
+
+            padding: 150px 8% 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 60px;
+
+            position: relative;
+        }
+
+        #home::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            right: -150px;
+            top: 80px;
+
+            background: var(--cyan);
+
+            filter: blur(180px);
+
+            opacity: 0.08;
+
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome {
+            color: var(--cyan);
+
+            font-size: 15px;
+            font-weight: bold;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 15px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(42px, 6vw, 70px);
+
+            line-height: 1.1;
+
+            margin-bottom: 15px;
+        }
+
+        .hero-content h1 span {
+            color: var(--cyan);
+        }
+
+        .hero-content h2 {
+            color: #9eb2c6;
+
+            font-size: 25px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            color: var(--text);
+
+            font-size: 18px;
+
+            max-width: 650px;
+
+            margin-bottom: 30px;
+        }
+
+        /* ==============================
+           BUTTONS
+        ============================== */
+
+        .buttons {
+            display: flex;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 13px 26px;
+
+            border-radius: 30px;
+
+            background: var(--cyan);
+
+            border: 2px solid var(--cyan);
+
+            color: #031018;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+
+            background: transparent;
+
+            color: var(--cyan);
+        }
+
+        .btn-outline {
+            background: transparent;
+
+            color: var(--cyan);
+        }
+
+        .btn-outline:hover {
+            background: var(--cyan);
+
+            color: #031018;
+        }
+
+        /* ==============================
+           PROFILE PHOTO
+        ============================== */
+
+        .hero-photo {
+            position: relative;
+
+            z-index: 2;
+
+            flex-shrink: 0;
+        }
+
+        .photo-border {
+            width: 330px;
+            height: 330px;
+
+            padding: 7px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(
+                135deg,
+                var(--cyan),
+                var(--blue),
+                var(--cyan)
+            );
+
+            box-shadow:
+                0 0 30px rgba(0, 229, 255, 0.3),
+                0 0 80px rgba(0, 229, 255, 0.1);
+
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        .photo-border img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 5px solid var(--bg);
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* ==============================
+           GENERAL SECTION
+        ============================== */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 55px;
+        }
+
+        .section-title .small {
+            color: var(--cyan);
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            letter-spacing: 3px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+
+            margin-top: 7px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+
+            margin-top: 10px;
+        }
+
+        /* ==============================
+           ABOUT
+        ============================== */
+
+        #about {
+            background: var(--bg2);
+        }
+
+        .about-container {
+            max-width: 1050px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 30px;
+        }
+
+        .about-card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            padding: 32px;
+
+            transition: 0.3s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-7px);
+
+            border-color: var(--cyan);
+        }
+
+        .about-card h3 {
+            color: var(--cyan);
+
+            font-size: 24px;
+
+            margin-bottom: 15px;
+        }
+
+        .about-card p {
+            color: var(--text);
+
+            font-size: 16px;
+        }
+
+        .details li {
+            margin-bottom: 13px;
+
+            color: var(--text);
+        }
+
+        .details strong {
+            color: white;
+        }
+
+        /* ==============================
+           SKILLS
+        ============================== */
+
+        #skills {
+            background: var(--bg);
+        }
+
+        .skills-grid {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(200px, 1fr));
+
+            gap: 20px;
+        }
+
+        .skill {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 16px;
+
+            padding: 28px 20px;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-8px);
+
+            border-color: var(--cyan);
+
+            box-shadow: 0 10px 35px rgba(0, 229, 255, 0.08);
+        }
+
+        .skill-icon {
+            font-size: 38px;
+
+            margin-bottom: 12px;
+        }
+
+        .skill h3 {
+            margin-bottom: 8px;
+        }
+
+        .skill p {
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+        /* ==============================
+           PROJECTS
+        ============================== */
+
+        #projects {
+            background: var(--bg2);
+        }
+
+        .projects-grid {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 25px;
+        }
+
+        .project {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            padding: 30px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: 0.3s;
+        }
+
+        .project::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 4px;
+
+            background: var(--cyan);
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+
+            border-color: var(--cyan);
+        }
+
+        .project-number {
+            color: var(--cyan);
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+        .project h3 {
+            font-size: 23px;
+
+            margin-bottom: 12px;
+        }
+
+        .project p {
+            color: var(--text);
+
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            background: #10263b;
+
+            border-radius: 20px;
+
+            color: var(--cyan);
+
+            font-size: 12px;
+
+            margin: 3px;
+        }
+
+        /* ==============================
+           EDUCATION
+        ============================== */
+
+        #education {
+            background: var(--bg);
+        }
+
+        .education {
+            max-width: 850px;
+
+            margin: auto;
+        }
+
+        .education-card {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 25px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-left: 4px solid var(--cyan);
+
+            border-radius: 16px;
+
+            padding: 30px;
+        }
+
+        .education-icon {
+            font-size: 42px;
+        }
+
+        .education-card h3 {
+            color: var(--cyan);
+
+            font-size: 24px;
+        }
+
+        .education-card h4 {
+            margin: 5px 0;
+        }
+
+        .education-card p {
+            color: var(--muted);
+        }
+
+        /* ==============================
+           INTERESTS
+        ============================== */
+
+        #interests {
+            background: var(--bg2);
+        }
+
+        .interests {
+            max-width: 900px;
+
+            margin: auto;
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+        }
+
+        .interest {
+            color: var(--cyan);
+
+            border: 1px solid var(--cyan);
+
+            background: rgba(0, 229, 255, 0.04);
+
+            padding: 12px 22px;
+
+            border-radius: 30px;
+
+            transition: 0.3s;
+        }
+
+        .interest:hover {
+            background: var(--cyan);
+
+            color: #031018;
+
+            transform: translateY(-4px);
+        }
+
+        /* ==============================
+           CONTACT
+        ============================== */
+
+        #contact {
+            background: var(--bg);
+        }
+
+        .contact-box {
+            max-width: 850px;
+
+            margin: auto;
+
+            text-align: center;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 20px;
+
+            padding: 45px 30px;
+        }
+
+        .contact-box h3 {
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+        .contact-box > p {
+            color: var(--muted);
+
+            margin-bottom: 25px;
+        }
+
+        .contact-details {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            background: #071525;
+
+            border-radius: 10px;
+
+            padding: 14px 20px;
+
+            color: var(--text);
+        }
+
+        .contact-item strong {
+            color: var(--cyan);
+        }
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            text-align: center;
+
+            padding: 30px 20px;
+
+            background: #03070d;
+
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            color: var(--muted);
+
+            font-size: 14px;
+
+            margin: 5px;
+        }
+
+        footer span {
+            color: var(--cyan);
+        }
+
+        /* ==============================
+           MOBILE
+        ============================== */
+
+        @media (max-width: 900px) {
+
+            #home {
+                flex-direction: column-reverse;
+
+                text-align: center;
+
+                padding-top: 150px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-border {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            header {
+                padding: 16px 5%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .hero-content h2 {
+                font-size: 20px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .photo-border {
+                width: 230px;
+                height: 230px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .education-card {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+====================================== -->
+
+<header>
+
+    <div class="logo">
+        Amulya<span>.dev</span>
+    </div>
+
+    <nav>
+
+        <a href="#home">Home</a>
+
+        <a href="#about">About</a>
+
+        <a href="#skills">Skills</a>
+
+        <a href="#projects">Projects</a>
+
+        <a href="#education">Education</a>
+
+        <a href="#interests">Interests</a>
+
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+</header>
+
+
+<!-- =====================================
+     HOME
+====================================== -->
+
+<section id="home">
+
+    <div class="hero-content">
+
+        <div class="welcome">
+            WELCOME TO MY PORTFOLIO
+        </div>
+
+        <h1>
+            Hi, I'm
+            <span>Golla Amulya</span>
+        </h1>
+
+        <h2>
+            CSE Student & Cybersecurity Enthusiast
+        </h2>
+
+        <p>
+            I am a Computer Science Engineering student with a strong
+            interest in cybersecurity, networking and technology.
+            I am continuously learning and developing my technical
+            skills to build a career in cybersecurity.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#about" class="btn">
+                Explore My Portfolio
+            </a>
+
+            <a href="#contact" class="btn btn-outline">
+                Contact Me
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-photo">
+
+        <div class="photo-border">
+
+            <img
+                src="profile.jpeg"
+                alt="Golla Amulya"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     ABOUT
+====================================== -->
+
+<section id="about">
+
+    <div class="section-title">
+
+        <div class="small">
+            About Me
+        </div>
+
+        <h2>Who I Am</h2>
+
+        <p>
+            A CSE student passionate about cybersecurity and technology.
+        </p>
+
+    </div>
+
+
+    <div class="about-container">
+
+
+        <div class="about-card">
+
+            <h3>About Me</h3>
+
+            <p>
+                Hello! I'm <strong>Golla Amulya</strong>.
+                I am a Computer Science Engineering student at
+                <strong>Sanskrithi School of Engineering</strong>.
+            </p>
+
+            <br>
+
+            <p>
+                My primary interest is cybersecurity. I am interested
+                in understanding computer networks, cyber threats,
+                ethical hacking concepts, network security and
+                modern cybersecurity technologies.
+            </p>
+
+            <br>
+
+            <p>
+                My goal is to continuously improve my technical
+                knowledge and build practical cybersecurity skills.
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <h3>Personal Information</h3>
+
+            <ul class="details">
+
+                <li>
+                    <strong>Name:</strong>
+                    Golla Amulya
+                </li>
+
+                <li>
+                    <strong>College:</strong>
+                    Sanskrithi School of Engineering
+                </li>
+
+                <li>
+                    <strong>Department:</strong>
+                    Computer Science Engineering
+                </li>
+
+                <li>
+                    <strong>Graduation:</strong>
+                    2028
+                </li>
+
+                <li>
+                    <strong>Username:</strong>
+                    amulyayadav
+                </li>
+
+                <li>
+                    <strong>Career Interest:</strong>
+                    Cybersecurity
+                </li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     SKILLS
+====================================== -->
+
+<section id="skills">
+
+    <div class="section-title">
+
+        <div class="small">
+            Skills
+        </div>
+
+        <h2>My Skills</h2>
+
+        <p>
+            Areas I am learning and developing.
+        </p>
+
+    </div>
+
+
+    <div class="skills-grid">
+
+
+        <div class="skill">
+
+            <div class="skill-icon">
+                🔐
+            </div>
+
+            <h3>
+                Cybersecurity
+            </h3>
+
+            <p>
+                Cybersecurity fundamentals and security concepts.
+            </p>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-icon">
+                🌐
+            </div>
+
+            <h3>
+                Networking
+            </h3>
+
+            <p>
+                Networking concepts and communication.
+            </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <div class="skill-icon">
+                🖥️
+            </div>
+
+            <h3>Computer Networks</h3>
+
+            <p>
+                Network models, protocols and architecture.
+            </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <div class="skill-icon">
+                🛡️
+            </div>
+
+            <h3>Network Security</h3>
+
+            <p>
+                Learning how networks can be protected.
+            </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <div class="skill-icon">
+                ⚡
+            </div>
+
+            <h3>Ethical Hacking</h3>
+
+            <p>
+                Understanding ethical hacking concepts.
+            </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <div class="skill-icon">
+                💻
+            </div>
+
+            <h3>Web Security</h3>
+
+            <p>
+                Learning basic web security concepts.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     PROJECTS
+========================== -->
+
+<section id="projects">
+
+    <div class="section-heading">
+
+        <div class="tag">
+            My Projects
+        </div>
+
+        <h2>Projects & Interests</h2>
+
+        <p>
+            Areas I am exploring and building knowledge in.
+        </p>
+
+    </div>
+
+
+    <div class="project-container">
+
+
+        <div class="project-card">
+
+            <div class="project-number">
+                PROJECT 01
+            </div>
+
+            <h3>Cybersecurity Learning</h3>
+
+            <p>
+                A personal learning journey focused on cybersecurity
+                fundamentals, cyber threats, ethical hacking concepts
+                and security awareness.
+            </p>
+
+            <span class="project-tag">
+                Cybersecurity
+            </span>
+
+            <span class="project-tag">
+                Security
+            </span>
+
+        </div>
+
+
+
+        <div class="project-card">
+
+            <div class="project-number">
+                PROJECT 02
+            </div>
+
+            <h3>Network Security</h3>
+
+            <p>
+                Exploring IP addresses, OSI model, TCP/IP, ports,
+                DNS, firewalls and other important networking concepts
+                required for cybersecurity.
+            </p>
+
+            <span class="project-tag">
+                Networking
+            </span>
+
+            <span class="project-tag">
+                TCP/IP
+            </span>
+
+        </div>
+
+
+
+        <div class="project-card">
+
+            <div class="project-number">
+                PROJECT 03
+            </div>
+
+            <h3>AI for Social Impact</h3>
+
+            <p>
+                Exploring ideas that use artificial intelligence and
+                technology to solve real-world problems and create
+                useful solutions for society.
+            </p>
+
+            <span class="project-tag">
+                AI
+            </span>
+
+            <span class="project-tag">
+                Innovation
+            </span>
+
+        </div>
+
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     EDUCATION
+========================== -->
+
+<section id="education">
+
+    <div class="section-heading">
+
+        <div class="tag">
+            Education
+        </div>
+
+        <h2>My Education</h2>
+
+        <p>
+            My academic journey.
+        </p>
+
+    </div>
+
+
+    <div class="education-container">
+
+        <div class="education-card">
+
+            <div class="education-icon">
+                🎓
+            </div>
+
+            <div>
+
+                <h3>
+                    Bachelor of Technology
+                </h3>
+
+                <h4>
+                    Computer Science Engineering
+                </h4>
+
+                <p>
+                    Sanskrithi School of Engineering
+                </p>
+
+                <p>
+                    Expected Graduation: 2028
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     INTERESTS
+========================== -->
+
+<section id="interests">
+
+    <div class="section-heading">
+
+        <div class="tag">
+            Interests
+        </div>
+
+        <h2>What I'm Interested In</h2>
+
+    </div>
+
+
+    <div class="interest-container">
+
+        <div class="interest">
+            Cybersecurity
+        </div>
+
+        <div class="interest">
+            Ethical Hacking
+        </div>
+
+        <div class="interest">
+            Network Security
+        </div>
+
+        <div class="interest">
+            Computer Networks
+        </div>
+
+        <div class="interest">
+            Cyber Threats
+        </div>
+
+        <div class="interest">
+            Web Security
+        </div>
+
+        <div class="interest">
+            Artificial Intelligence
+        </div>
+
+        <div class="interest">
+            Technology
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================== -->
+
+<section id="contact">
+
+    <div class="section-heading">
+
+        <div class="tag">
+            Contact
+        </div>
+
+        <h2>Let's Connect</h2>
+
+        <p>
+            Feel free to connect with me.
+        </p>
+
+    </div>
+
+
+    <div class="contact-box">
+
+        <h3>
+            Golla Amulya
+        </h3>
+
+        <p>
+            CSE Student | Cybersecurity Enthusiast
+        </p>
+
+
+        <div class="contact-details">
+
+            <div class="contact-item">
+
+                <span>Username:</span>
+                amulyayadav
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <span>Field:</span>
+                Cybersecurity
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <span>Graduation:</span>
+                2028
+
+            </div>
+
+        </div>
+
+
+        <!-- Replace with your real email -->
+
+        <a
+            href="mailto:your-email@example.com"
+            class="btn"
+        >
+            Send Me an Email
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    <p>
+        © 2026
+        <strong>Golla Amulya</strong>.
+        All Rights Reserved.
+    </p>
+
+    <p>
+        Built with HTML & CSS | Cybersecurity Portfolio
+    </p>
+
+</footer>
+
+
+</body>
+</html>
